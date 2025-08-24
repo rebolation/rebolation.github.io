@@ -1,7 +1,7 @@
 ---
 summary: 나만의 파이썬 마이크로 웹 프레임워크
 category: backend
-tag: [framework, python]
+tag: [backend]
 bigimg: /images/mywebframework.png
 desc: 파이썬으로 나만의 마이크로 웹 프레임워크를 만들어보자. 내가 만든 프레임워크라면 사용법도 쉽게 잊어버리지 않을 것이다.
 ---

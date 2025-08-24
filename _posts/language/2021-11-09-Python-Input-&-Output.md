@@ -1,7 +1,7 @@
 ---
 summary: 파이썬 입출력, 스트림, 인코딩, 버퍼
 category: language
-tags: [python, network]
+tags: [language]
 ---
 
 ### 입출력

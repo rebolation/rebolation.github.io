@@ -1,7 +1,7 @@
 ---
 summary: 파이썬 데이터 모델
 category: language
-tag: python
+tag: language
 ---
 
 ## 객체, 값, 형 : 객체의 ID, 타입, 값
