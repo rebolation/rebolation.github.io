@@ -1,0 +1,51 @@
+---
+layout: base
+---
+
+<style>
+@media (min-width: 640px) {
+  /* .post-card {
+    grid-template-columns: 1fr 250px;
+  } */
+}
+
+@media (max-width: 640px) {
+  .post-card {
+    grid-template-columns: 1fr;
+  }
+
+  .post-card > .post-link {
+    display: none
+  }
+}
+</style>
+
+<div class="home tag tags tag_page">
+
+  <h1>by Tag</h1>
+
+  {% assign sorted_tags = site.tags | sort %}
+  {% assign date_format = site.minima.date_format | default: "%Y-%m-%d" %}
+  {% for tag in sorted_tags %}
+    <div class="tag-group" id="{{tag[0]}}">
+      {% assign posts = tag[1] | sort %}
+
+      {% if posts != empty %}
+        <h2 id="{{tag[0] | uri_escape | downcase}}">{{tag[0] | upcase}}</h2>
+        <ul>
+          {% for post in posts reversed %}
+            <li class="post-card" style="display: grid; align-items: center;">
+              <div class="post-content" style="flex-grow: 0;">
+                <span class="post-meta" style="margin-right:10px;">{{ post.date | date: date_format }}</span>
+                <!-- <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a> -->
+                <a class="title" href="{{ post.url | relative_url }}" hx-get="{{ post.url | relative_url }}" hx-target="body" hx-push-url="true">{{ post.title | escape }}</a>
+                <span class="summary"> - {{ post.summary }}</span>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+</div>

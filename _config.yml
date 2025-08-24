@@ -18,21 +18,72 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@example.com
+title: rebolation
+author: "mun jaehyeon"
+email: rebolation@naver.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  rebolation
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
-
+github_username: rebolation
+lang: ko
+copyright: Copyright © 2025 Mun Jaehyeon
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  #- jekyll-paginate
+
+#paginate: 5
+
+minima:
+  date_format: "%Y-%m-%d"
+
+
+defaults:
+  -
+    scope:
+     path: ""
+    values:
+      layout: "post"
+      author: "mun jaehyeon"
+      image: "/images/category/default.png"
+  -
+    scope:
+      path: "_posts/design"
+    values:
+      image: "/images/category/design.png"
+  -
+    scope:
+      path: "_posts/architecture"
+    values:
+      image: "/images/category/architecture.png"
+  -
+    scope:
+      path: "_posts/frontend"
+    values:
+      image: "/images/category/frontend.png"
+  -
+    scope:
+      path: "_posts/backend"
+    values:
+      image: "/images/category/backend.png"
+  -
+    scope:
+      path: "_posts/language"
+    values:
+      image: "/images/category/language.png"
+  -
+    scope:
+      path: "_posts/game"
+    values:
+      image: "/images/category/game.png"
+
+
+#collections:
+#  frontend:
+#    output: true
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.

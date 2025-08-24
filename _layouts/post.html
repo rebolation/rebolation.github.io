@@ -1,0 +1,81 @@
+---
+layout: default
+---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {{ page.date | date: date_format }}
+      </time>
+      {%- if page.author -%}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+      {%- endif -%}</p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+
+
+
+    <div class="copyright">
+      {{ site.copyright }}
+      <!-- <p>문재현 기자</p>
+      <p>디자이너와 개발자의 열린 공간 - 디디스퀘어</p>
+      <p>Copyrights ⓒ 디디스퀘어, 무단전재 및 재배포 금지</p> -->
+    </div>
+
+  </div>
+
+
+
+  <div class="prev_next">
+    {% assign cat = page.categories[0] %}
+    {% assign cat_list = site.categories[cat] %}
+
+    <a class="cat" href="{{ cat | relative_url }}" hx-get="{{ cat | relative_url }}" hx-target="body" hx-swap="show:window:top" hx-push-url="true">{{ cat | capitalize }} 카테고리의 다른 글 보기</a>
+
+    {% for post in cat_list %}
+      {% if post.url == page.url %}
+        {% assign pOffset = forloop.index0 | minus: 1 %}
+        {% assign nOffset = pOffset | plus: 2 %}
+        {% if forloop.first == false %}
+          {% assign next_post = cat_list[pOffset] %}
+          <!-- <a class="prev" href="{{ next_post.url }}"></a> -->
+          <a class="next" href="{{ next_post.url | relative_url }}" hx-get="{{ next_post.url | relative_url }}" hx-target="body" hx-swap="show:window:top" hx-push-url="true">
+            <img src="{{ next_post.image}}"/>
+            <span>
+              <span class="title">{{ next_post.title }}</span>
+              <span class="summary">{{ next_post.summary }}</span>
+            </span>
+          </a>
+          {% endif %}
+          {% if forloop.last == false %}
+          {% assign previous_post = cat_list[nOffset] %}
+          <!-- <a class="prev" href="{{ previous_post.url }}"> -->
+          <a class="next" href="{{ previous_post.url | relative_url }}" hx-get="{{ previous_post.url | relative_url }}" hx-target="body" hx-swap="show:window:top" hx-push-url="true">
+            <img src="{{ previous_post.image}}"/>
+            <span>
+              <span class="title">{{ previous_post.title }}</span>
+              <span class="summary">{{ previous_post.summary }}</span>
+            </span>
+          </a>
+        {% endif %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+
+
+
+
+
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
